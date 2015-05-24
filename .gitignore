@@ -1,3 +1,7 @@
+# Project specific
+bin
+libs/slick
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
