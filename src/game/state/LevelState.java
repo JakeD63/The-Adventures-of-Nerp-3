@@ -15,55 +15,51 @@ import game.level.Level;
 
 public class LevelState extends BasicGameState {
 
-	Level level;
-	String startingLevel;
-	private Player player;
-	PlayerController playerController;
-	
-	public LevelState(String startingLevel){
-		this.startingLevel = startingLevel;
-		
-			}
-	
-	
-	
-	
-	public void init(GameContainer arg0, StateBasedGame arg1)
-			throws SlickException {
-		
-		level = new Level(startingLevel);
-		
-		player = new Player(128,416);
+    Level level;
+    String startingLevel;
+    private Player player;
+    PlayerController playerController;
+
+    public LevelState(String startingLevel) {
+        this.startingLevel = startingLevel;
+
+    }
+
+    public void init(GameContainer arg0, StateBasedGame arg1)
+            throws SlickException {
+
+        level = new Level(startingLevel);
+
+        player = new Player(128, 416);
         level.addCharacter(player);
-        
+
         playerController = new MouseAndKeyboardPlayerController(player);
 
-	}
+    }
 
-	public void render(GameContainer container, StateBasedGame sbg, Graphics g)
-			throws SlickException {
-		g.scale(Game.SCALE, Game.SCALE);
-		level.render();
-		
-		
-	}
+    public void render(GameContainer container, StateBasedGame sbg, Graphics g)
+            throws SlickException {
+        g.scale(Game.SCALE, Game.SCALE);
+        level.render();
 
-	public void update(GameContainer container, StateBasedGame sbg, int delta)
-			throws SlickException {
-		
-		playerController.handleInput(container.getInput(), delta);
-		
-	}
-	
-	 public void keyPressed(int key, char code){
-	        //if the key is escape, close our application
-	        if(key == Input.KEY_ESCAPE){
-	            System.exit(0);
-	        }
-	    }
+    }
 
-	public int getID() {
-		return 0;
-	}
+    public void update(GameContainer container, StateBasedGame sbg, int delta)
+            throws SlickException {
+
+        playerController.handleInput(container.getInput(), delta);
+
+    }
+
+    public void keyPressed(int key, char code) {
+        // if the key is escape, close our application
+        if (key == Input.KEY_ESCAPE) {
+            System.exit(0);
+        }
+    }
+
+    public int getID() {
+        return 0;
+    }
 
 }
